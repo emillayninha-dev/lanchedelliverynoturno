@@ -526,26 +526,47 @@
 <body>
 
     <!-- ===== TOAST ===== -->
-    <div class="toast-container" aria-live="polite"><div id="toast" class="toast">🚫 "Frango com Bacon" indisponível</div></div>
+    <div class="toast-container" aria-live="polite"><div id="toast" class="toast">✅ Sabores atualizados!</div></div>
 
     <!-- ===== MODAL GENÉRICO ===== -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal" id="modalContent">
-            <h3 id="modalTitulo">🧪 Editar Sabores de Bebidas</h3>
+            <h3 id="modalTitulo">✏️ Editar Produto</h3>
             <div id="modalBody">
                     <div class="campo" style="margin-bottom:12px;">
-                        <label>Refrigerante 1L (separados por vírgula):</label>
-                        <input type="text" id="inputSaboresRefri1l" value="Pepsi, Guaraná" placeholder="Ex: Pepsi, Guaraná" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                        <label>Nome do Produto *</label>
+                        <input type="text" id="inputNomeProduto" value="Refrigerante Lata" placeholder="Ex: Pizza de Frango" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
                     </div>
                     <div class="campo" style="margin-bottom:12px;">
-                        <label>Refrigerante Lata (separados por vírgula):</label>
-                        <input type="text" id="inputSaboresRefrilata" value="Pepsi, Guaraná, Fanta Uva, Fanta Laranja" placeholder="Ex: Pepsi, Guaraná, Fanta Uva" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                        <label>Descrição</label>
+                        <input type="text" id="inputDescProduto" value="Escolha o sabor" placeholder="Ex: Mussarela, frango, bacon" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
                     </div>
                     <div class="campo" style="margin-bottom:12px;">
-                        <label>Suco Natural (separados por vírgula):</label>
-                        <input type="text" id="inputSaboresSuco" value="Goiaba, Acerola, Maracujá" placeholder="Ex: Goiaba, Acerola, Maracujá" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                        <label>Preço (R$) *</label>
+                        <input type="number" id="inputPrecoProduto" value="5" placeholder="29.99" step="0.01" min="0" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                    </div>
+                    <div class="campo" style="margin-bottom:12px;">
+                        <label>URL da Imagem (opcional)</label>
+                        <input type="text" id="inputImgProduto" value="refri lata.png" placeholder="ex: pizza.png" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                    </div>
+                    <div class="campo" style="margin-bottom:12px;">
+                        <label>Tipo:</label>
+                        <select id="inputTipoProduto" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                            <option value="">Nenhum (item simples)</option>
+                            <option value="pizza">Pizza</option>
+                            <option value="combo">Combo</option>
+                            <option value="refri1l">Refrigerante 1L</option>
+                            <option value="refrilata" selected="">Refrigerante Lata</option>
+                            <option value="suco">Suco</option>
+                            <option value="salgados">Salgados</option>
+                        </select>
+                    </div>
+                    <div class="campo" style="margin-bottom:12px;">
+                        <label><input type="checkbox" id="inputDisponivel" checked=""> Disponível</label>
                     </div>
                     <div class="mensagem-aviso" id="modalAviso"></div>
+                    
+                    <button type="button" id="btnRemoverProdutoModal" style="width:100%;margin-top:4px;padding:12px;border-radius:10px;border:1px solid var(--admin-color);background:transparent;color:var(--admin-color);font-weight:700;font-size:14px;cursor:pointer;"><i class="fas fa-trash"></i> Remover este produto</button>
                 </div>
             <div class="botoes">
                 <button class="btn-cancelar" id="modalCancelar">Cancelar</button>
@@ -638,10 +659,65 @@
     <div id="cardapioContainer"><section class="secao" data-categoria="pizzas"><h2 class="secao-titulo">
                         🍕 Pizzas 
                         
-                    </h2><div class="grid-produtos"><div class="produto" data-id="pizza2" data-categoria="pizzas" data-tipo="pizza" data-index="1">
-                            <div class="img-placeholder"><img src="carne com catupiry.png" alt="Carne com Catupiry" loading="lazy" class="carregada"></div>
+                    </h2><div class="grid-produtos"><div class="produto" data-id="pizza1" data-categoria="pizzas" data-tipo="pizza" data-index="0">
+                            <div class="img-placeholder"><img src="calabresa cs.png" alt="Calabresa" loading="lazy" class="carregada"></div>
                             <div class="info">
-                                <div class="nome">Carne com Catupiry <small>Mussarela, carne moída, catupiry</small></div>
+                                <div class="nome">Calabresa <small>Mussarela, calabresa, cebola</small></div>
+                            </div>
+                            <div class="preco">R$ 30,00 </div>
+                            
+                            
+                            
+                            
+                            
+                        </div><div class="produto" data-id="pizza4" data-categoria="pizzas" data-tipo="pizza" data-index="3">
+                            <div class="img-placeholder"><img src="calabresa com bacon.png" alt="Calabresa com Bacon" loading="lazy" class="carregada"></div>
+                            <div class="info">
+                                <div class="nome">Calabresa com Bacon <small>Mussarela, calabresa, bacon</small></div>
+                            </div>
+                            <div class="preco">R$ 30,00 </div>
+                            
+                            
+                            
+                            
+                            
+                        </div><div class="produto" data-id="pizza5" data-categoria="pizzas" data-tipo="pizza" data-index="4">
+                            <div class="img-placeholder"><img src="frango metade carne de sol.png" alt="Meia Frango e Meia Carne de Sol" loading="lazy" class="carregada"></div>
+                            <div class="info">
+                                <div class="nome">Meia Frango e Meia Carne de Sol <small>Mussarela, frango, carne de sol</small></div>
+                            </div>
+                            <div class="preco">R$ 30,00 </div>
+                            
+                            
+                            
+                            
+                            
+                        </div><div class="produto" data-id="pizza6" data-categoria="pizzas" data-tipo="pizza" data-index="5">
+                            <div class="img-placeholder"><img src="frango com calabresa.png" alt="Frango com Calabresa" loading="lazy" class="carregada"></div>
+                            <div class="info">
+                                <div class="nome">Frango com Calabresa <small>Mussarela, frango, calabresa</small></div>
+                            </div>
+                            <div class="preco">R$ 30,00 </div>
+                            
+                            
+                            
+                            
+                            
+                        </div><div class="produto" data-id="pizza7" data-categoria="pizzas" data-tipo="pizza" data-index="6">
+                            <div class="img-placeholder"><img src="frango com bacon.png" alt="Frango com Bacon" loading="lazy" class="carregada"></div>
+                            <div class="info">
+                                <div class="nome">Frango com Bacon <small>Mussarela, frango, bacon</small></div>
+                            </div>
+                            <div class="preco">R$ 30,00 </div>
+                            
+                            
+                            
+                            
+                            
+                        </div><div class="produto" data-id="pizza8" data-categoria="pizzas" data-tipo="pizza" data-index="7">
+                            <div class="img-placeholder"><img src="moda da casa.png" alt="Moda da Casa" loading="lazy" class="carregada"></div>
+                            <div class="info">
+                                <div class="nome">Moda da Casa <small>Mussarela, ingredientes especiais</small></div>
                             </div>
                             <div class="preco">R$ 30,00 </div>
                             
@@ -761,7 +837,7 @@
                             
                             
                         </div><div class="produto" data-id="msgmmqq3t8mww" data-categoria="hambúrguer" data-tipo="" data-index="2">
-                            <div class="img-placeholder skeleton"><img src="X Carne de sol.jpg" alt="X-Carne de sol" loading="lazy"></div>
+                            <div class="img-placeholder"><img src="X Carne de sol.jpg" alt="X-Carne de sol" loading="lazy" class="carregada"></div>
                             <div class="info">
                                 <div class="nome">X-Carne de sol <small>Carne de hamburguer, ovo, carne de sol, queijo, presunto, alface, tomate e molho da casa</small></div>
                             </div>
@@ -772,7 +848,7 @@
                             
                             
                         </div><div class="produto" data-id="msgmfr976u3jw" data-categoria="hambúrguer" data-tipo="" data-index="3">
-                            <div class="img-placeholder skeleton"><img src="X bacon.jpg" alt="X - Bacon" loading="lazy"></div>
+                            <div class="img-placeholder"><img src="X bacon.jpg" alt="X - Bacon" loading="lazy" class="carregada"></div>
                             <div class="info">
                                 <div class="nome">X - Bacon <small>Carne de hamburguer, ovo, bacon, queijo, presunto, alface, tomate e molho da casa</small></div>
                             </div>
@@ -783,7 +859,7 @@
                             
                             
                         </div><div class="produto" data-id="msgld8blxmvb2" data-categoria="hambúrguer" data-tipo="" data-index="4">
-                            <div class="img-placeholder skeleton"><img src="X Calabresa.jpg" alt="X-Calabresa" loading="lazy"></div>
+                            <div class="img-placeholder"><img src="X Calabresa.jpg" alt="X-Calabresa" loading="lazy" class="carregada"></div>
                             <div class="info">
                                 <div class="nome">X-Calabresa <small>Carne de hambúrguer, ovo, calabresa, queijo, presunto, alface, tomate e molho da casa</small></div>
                             </div>
@@ -794,7 +870,7 @@
                             
                             
                         </div><div class="produto" data-id="msglgz2lbtly9" data-categoria="hambúrguer" data-tipo="" data-index="5">
-                            <div class="img-placeholder skeleton"><img src="X Frango.jpg" alt="X - Frango" loading="lazy"></div>
+                            <div class="img-placeholder"><img src="X Frango.jpg" alt="X - Frango" loading="lazy" class="carregada"></div>
                             <div class="info">
                                 <div class="nome">X - Frango <small>Carne de hamburguer, ovo, frango desfiado, queijo, presunto, alface, tomate e molho da casa</small></div>
                             </div>
@@ -805,7 +881,7 @@
                             
                             
                         </div><div class="produto" data-id="msgl64t9ijwsd" data-categoria="hambúrguer" data-tipo="" data-index="6">
-                            <div class="img-placeholder skeleton"><img src="Bauru simples.jpeg" alt="Bauru simples" loading="lazy"></div>
+                            <div class="img-placeholder"><img src="Bauru simples.jpeg" alt="Bauru simples" loading="lazy" class="carregada"></div>
                             <div class="info">
                                 <div class="nome">Bauru simples <small>Carne de hamburguer, ovo, queijo, presunto, alface, tomate e molho da casa</small></div>
                             </div>
@@ -895,7 +971,7 @@
                     "nome": "Calabresa",
                     "desc": "Mussarela, calabresa, cebola",
                     "preco": 30,
-                    "disponivel": false,
+                    "disponivel": true,
                     "img": "calabresa cs.png",
                     "tipo": "pizza"
                 },
@@ -904,7 +980,7 @@
                     "nome": "Carne com Catupiry",
                     "desc": "Mussarela, carne moída, catupiry",
                     "preco": 30,
-                    "disponivel": true,
+                    "disponivel": false,
                     "img": "carne com catupiry.png",
                     "tipo": "pizza"
                 },
@@ -922,7 +998,7 @@
                     "nome": "Calabresa com Bacon",
                     "desc": "Mussarela, calabresa, bacon",
                     "preco": 30,
-                    "disponivel": false,
+                    "disponivel": true,
                     "img": "calabresa com bacon.png",
                     "tipo": "pizza"
                 },
@@ -931,7 +1007,7 @@
                     "nome": "Meia Frango e Meia Carne de Sol",
                     "desc": "Mussarela, frango, carne de sol",
                     "preco": 30,
-                    "disponivel": false,
+                    "disponivel": true,
                     "img": "frango metade carne de sol.png",
                     "tipo": "pizza"
                 },
@@ -940,7 +1016,7 @@
                     "nome": "Frango com Calabresa",
                     "desc": "Mussarela, frango, calabresa",
                     "preco": 30,
-                    "disponivel": false,
+                    "disponivel": true,
                     "img": "frango com calabresa.png",
                     "tipo": "pizza"
                 },
@@ -949,7 +1025,7 @@
                     "nome": "Frango com Bacon",
                     "desc": "Mussarela, frango, bacon",
                     "preco": 30,
-                    "disponivel": false,
+                    "disponivel": true,
                     "img": "frango com bacon.png",
                     "tipo": "pizza"
                 },
@@ -958,7 +1034,7 @@
                     "nome": "Moda da Casa",
                     "desc": "Mussarela, ingredientes especiais",
                     "preco": 30,
-                    "disponivel": false,
+                    "disponivel": true,
                     "img": "moda da casa.png",
                     "tipo": "pizza"
                 },
@@ -1139,7 +1215,8 @@
         ],
         "refrilata": [
             "Guaraná",
-            "Fanta Uva"
+            "Fanta Uva",
+            "Pepsi"
         ],
         "suco": [
             "Goiaba",
