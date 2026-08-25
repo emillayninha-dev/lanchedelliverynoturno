@@ -526,7 +526,7 @@
 <body>
 
     <!-- ===== TOAST ===== -->
-    <div class="toast-container" aria-live="polite"><div id="toast" class="toast">🚫 "Moda da Casa" indisponível</div></div>
+    <div class="toast-container" aria-live="polite"><div id="toast" class="toast">🚫 "Frango com Bacon" indisponível</div></div>
 
     <!-- ===== MODAL GENÉRICO ===== -->
     <div class="modal-overlay" id="modalOverlay">
@@ -703,10 +703,10 @@
                             
                             
                             
-                        </div><div class="produto" data-id="pizza7" data-categoria="pizzas" data-tipo="pizza" data-index="6">
-                            <div class="img-placeholder"><img src="frango com bacon.png" alt="Frango com Bacon" loading="lazy" class="carregada"></div>
+                        </div><div class="produto" data-id="pizza8" data-categoria="pizzas" data-tipo="pizza" data-index="7">
+                            <div class="img-placeholder"><img src="moda da casa.png" alt="Moda da Casa" loading="lazy" class="carregada"></div>
                             <div class="info">
-                                <div class="nome">Frango com Bacon <small>Mussarela, frango, bacon</small></div>
+                                <div class="nome">Moda da Casa <small>Mussarela, ingredientes especiais</small></div>
                             </div>
                             <div class="preco">R$ 30,00 </div>
                             
@@ -903,7 +903,15 @@
     <!-- ===== HISTÓRICO ===== -->
     <div class="historico" id="historicoContainer">
         <div class="hist-titulo"><span>📜 Últimos pedidos</span><button id="btnLimparHistorico" style="display: none;">Limpar histórico</button></div>
-        <div id="histLista" class="hist-lista"><div class="historico-vazio">Nenhum pedido finalizado ainda.</div></div>
+        <div id="histLista" class="hist-lista">
+                        <div class="hist-item">
+                            <div class="hist-info">
+                                <div class="hist-nomes">Moda da Casa, X Tudo</div>
+                                <div class="hist-data">11 de ago., 20:00 • R$ 47,98 • Nova Floresta</div>
+                            </div>
+                            <button class="btn-repetir" data-idx="0">Repetir</button>
+                        </div>
+                    </div>
     </div>
 
     <!-- ===== CARRINHO FLUTUANTE ===== -->
@@ -1006,7 +1014,7 @@
                     "nome": "Frango com Bacon",
                     "desc": "Mussarela, frango, bacon",
                     "preco": 30,
-                    "disponivel": true,
+                    "disponivel": false,
                     "img": "frango com bacon.png",
                     "tipo": "pizza"
                 },
@@ -1015,7 +1023,7 @@
                     "nome": "Moda da Casa",
                     "desc": "Mussarela, ingredientes especiais",
                     "preco": 30,
-                    "disponivel": false,
+                    "disponivel": true,
                     "img": "moda da casa.png",
                     "tipo": "pizza"
                 },
