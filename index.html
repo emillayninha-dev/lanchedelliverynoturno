@@ -526,7 +526,7 @@
 <body>
 
     <!-- ===== TOAST ===== -->
-    <div class="toast-container" aria-live="polite"><div id="toast" class="toast">✅ Produto "Refrigerante Lata e suco" atualizado!</div></div>
+    <div class="toast-container" aria-live="polite"><div id="toast" class="toast">✅ Produto "Combo Pizza + Refri Lata" atualizado!</div></div>
 
     <!-- ===== MODAL GENÉRICO ===== -->
     <div class="modal-overlay" id="modalOverlay">
@@ -535,43 +535,43 @@
             <div id="modalBody">
                     <div class="campo" style="margin-bottom:12px;">
                         <label>Nome do Produto *</label>
-                        <input type="text" id="inputNomeProduto" value="Refrigerante Lata e suco" placeholder="Ex: Pizza de Frango" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                        <input type="text" id="inputNomeProduto" value="Combo Pizza + Refri Lata" placeholder="Ex: Pizza de Frango" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
                     </div>
                     <div class="campo" style="margin-bottom:12px;">
                         <label>Descrição</label>
-                        <input type="text" id="inputDescProduto" value="Escolha o sabor" placeholder="Ex: Mussarela, frango, bacon" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                        <input type="text" id="inputDescProduto" value="Entrega grátis (NF) / R$3 (Jaç)" placeholder="Ex: Mussarela, frango, bacon" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
                     </div>
                     <div class="campo" style="margin-bottom:12px;">
                         <label>Preço (R$) *</label>
-                        <input type="number" id="inputPrecoProduto" value="5" placeholder="29.99" step="0.01" min="0" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                        <input type="number" id="inputPrecoProduto" value="35" placeholder="29.99" step="0.01" min="0" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
                     </div>
                     <div class="campo" style="margin-bottom:12px;">
                         <label>URL da Imagem (opcional)</label>
-                        <input type="text" id="inputImgProduto" value="refri e suco.jpeg" placeholder="ex: pizza.png" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                        <input type="text" id="inputImgProduto" value="pizza+lata.png" placeholder="ex: pizza.png" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
                     </div>
                     <div class="campo" style="margin-bottom:12px;">
                         <label>Tipo:</label>
                         <select id="inputTipoProduto" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
                             <option value="">Nenhum (item simples)</option>
                             <option value="pizza">Pizza</option>
-                            <option value="combo">Combo</option>
+                            <option value="combo" selected="">Combo</option>
                             <option value="refri1l">Refrigerante 1L</option>
-                            <option value="refrilata" selected="">Refrigerante Lata</option>
+                            <option value="refrilata">Refrigerante Lata</option>
                             <option value="suco">Suco</option>
                             <option value="salgados">Salgados</option>
                         </select>
                     </div>
-                    <div class="campo" style="margin-bottom:12px;display:none;" id="grupoComboCategoria">
+                    <div class="campo" style="margin-bottom:12px;" id="grupoComboCategoria">
                         <label>Item principal do combo (categoria):</label>
                         <select id="inputCategoriaComboProduto" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
-                            <option value="pizzas">🍕 Pizzas</option><option value="bebidas">🥤 Bebidas</option><option value="salgados" selected="">🍢 Salgados</option><option value="hambúrguer">🍔 Hambúrguer</option><option value="combossalgados">Combos Salgados</option>
+                            <option value="pizzas" selected="">🍕 Pizzas</option><option value="bebidas">🥤 Bebidas</option><option value="salgados">🍢 Salgados</option><option value="hambúrguer">🍔 Hambúrguer</option><option value="combossalgados">Combos Salgados</option>
                         </select>
                     </div>
-                    <div class="campo" style="margin-bottom:12px;display:none;" id="grupoComboBebida">
+                    <div class="campo" style="margin-bottom:12px;" id="grupoComboBebida">
                         <label>Bebida do combo:</label>
                         <select id="inputBebidaComboProduto" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
-                            <option value="refri1l" selected="">Refrigerante 1L</option>
-                            <option value="refrilata">Refrigerante Lata</option>
+                            <option value="refri1l">Refrigerante 1L</option>
+                            <option value="refrilata" selected="">Refrigerante Lata</option>
                             <option value="suco">Suco Natural</option>
                         </select>
                     </div>
@@ -743,7 +743,7 @@
                             
                             
                         </div><div class="destaque" data-id="combo2" data-categoria="combos" data-tipo="combo" data-bebida="refrilata" data-index="1">
-                            <div class="img-placeholder"><img src="pizza+lata.png" alt="Combo Pizza + Refri Lata" loading="lazy" class="carregada"></div>
+                            <div class="img-placeholder"><img src="pizza refri e suco.jpeg" alt="Combo Pizza + Refri Lata" loading="lazy" class="carregada"></div>
                             <div class="info">
                                 <div class="nome">Combo Pizza + Refri Lata <small>Entrega grátis (NF) / R$3 (Jaç)</small></div>
                             </div>
@@ -1079,7 +1079,7 @@
                     "desc": "Entrega grátis (NF) / R$3 (Jaç)",
                     "preco": 35,
                     "disponivel": true,
-                    "img": "pizza+lata.png",
+                    "img": "pizza refri e suco.jpeg",
                     "tipo": "combo",
                     "bebida": "refrilata",
                     "categoriaBase": "pizzas"
