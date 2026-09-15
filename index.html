@@ -526,7 +526,7 @@
 <body>
 
     <!-- ===== TOAST ===== -->
-    <div class="toast-container" aria-live="polite"><div id="toast" class="toast">✅ Produto "Combo cachorro quente" atualizado!</div></div>
+    <div class="toast-container" aria-live="polite"><div id="toast" class="toast">✅ Produto "Refrigerante Lata e suco" atualizado!</div></div>
 
     <!-- ===== MODAL GENÉRICO ===== -->
     <div class="modal-overlay" id="modalOverlay">
@@ -535,30 +535,44 @@
             <div id="modalBody">
                     <div class="campo" style="margin-bottom:12px;">
                         <label>Nome do Produto *</label>
-                        <input type="text" id="inputNomeProduto" value="Combo cachorro quente" placeholder="Ex: Pizza de Frango" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                        <input type="text" id="inputNomeProduto" value="Refrigerante Lata e suco" placeholder="Ex: Pizza de Frango" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
                     </div>
                     <div class="campo" style="margin-bottom:12px;">
                         <label>Descrição</label>
-                        <input type="text" id="inputDescProduto" value="cachorro quente + suco ou refri lata" placeholder="Ex: Mussarela, frango, bacon" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                        <input type="text" id="inputDescProduto" value="Escolha o sabor" placeholder="Ex: Mussarela, frango, bacon" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
                     </div>
                     <div class="campo" style="margin-bottom:12px;">
                         <label>Preço (R$) *</label>
-                        <input type="number" id="inputPrecoProduto" value="15" placeholder="29.99" step="0.01" min="0" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                        <input type="number" id="inputPrecoProduto" value="5" placeholder="29.99" step="0.01" min="0" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
                     </div>
                     <div class="campo" style="margin-bottom:12px;">
                         <label>URL da Imagem (opcional)</label>
-                        <input type="text" id="inputImgProduto" value="" placeholder="ex: pizza.png" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                        <input type="text" id="inputImgProduto" value="refri e suco.jpeg" placeholder="ex: pizza.png" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
                     </div>
                     <div class="campo" style="margin-bottom:12px;">
                         <label>Tipo:</label>
                         <select id="inputTipoProduto" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
                             <option value="">Nenhum (item simples)</option>
                             <option value="pizza">Pizza</option>
-                            <option value="combo" selected="">Combo</option>
+                            <option value="combo">Combo</option>
                             <option value="refri1l">Refrigerante 1L</option>
-                            <option value="refrilata">Refrigerante Lata</option>
+                            <option value="refrilata" selected="">Refrigerante Lata</option>
                             <option value="suco">Suco</option>
                             <option value="salgados">Salgados</option>
+                        </select>
+                    </div>
+                    <div class="campo" style="margin-bottom:12px;display:none;" id="grupoComboCategoria">
+                        <label>Item principal do combo (categoria):</label>
+                        <select id="inputCategoriaComboProduto" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                            <option value="pizzas">🍕 Pizzas</option><option value="bebidas">🥤 Bebidas</option><option value="salgados" selected="">🍢 Salgados</option><option value="hambúrguer">🍔 Hambúrguer</option><option value="combossalgados">Combos Salgados</option>
+                        </select>
+                    </div>
+                    <div class="campo" style="margin-bottom:12px;display:none;" id="grupoComboBebida">
+                        <label>Bebida do combo:</label>
+                        <select id="inputBebidaComboProduto" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                            <option value="refri1l" selected="">Refrigerante 1L</option>
+                            <option value="refrilata">Refrigerante Lata</option>
+                            <option value="suco">Suco Natural</option>
                         </select>
                     </div>
                     <div class="campo" style="margin-bottom:12px;">
@@ -630,7 +644,7 @@
     <div class="modal-overlay" id="confirmAcaoOverlay">
         <div class="modal" style="max-width:360px;">
             <h3 id="confirmAcaoTitulo">⚠️ Confirmar ação</h3>
-            <p id="confirmAcaoMensagem" style="color:var(--text-secondary);font-size:15px;line-height:1.6;margin:12px 0 20px;">Remover "Porção de Salgados" do cardápio? Essa ação não pode ser desfeita.</p>
+            <p id="confirmAcaoMensagem" style="color:var(--text-secondary);font-size:15px;line-height:1.6;margin:12px 0 20px;">Remover "Combo Pizza + Suco" do cardápio? Essa ação não pode ser desfeita.</p>
             <div class="botoes" style="justify-content:center;gap:10px;">
                 <button class="btn-cancelar" id="confirmAcaoCancelar">Cancelar</button>
                 <button class="btn-adicionar" id="confirmAcaoOk">🗑️ Remover</button>
@@ -739,34 +753,12 @@
                             
                             
                             
-                        </div><div class="destaque" data-id="mu2y6y1vmzbpl" data-categoria="combos" data-tipo="combo" data-bebida="refri1l" data-index="3">
-                            <div class="img-placeholder skeleton"><img src="coxinha +refri lata jpeg" alt="Combo coxinha" loading="lazy"></div>
+                        </div><div class="destaque" data-id="mu2y6y1vmzbpl" data-categoria="combos" data-tipo="combo" data-bebida="refrilata" data-index="3">
+                            <div class="img-placeholder"><img src="combos salgados.jpeg" alt="Combo coxinha" loading="lazy" class="carregada"></div>
                             <div class="info">
                                 <div class="nome">Combo coxinha <small>5 Coxinhas +refri lata</small></div>
                             </div>
                             <div class="preco">R$ 15,00 <span class="badge-gratis">+ENTREGA</span></div>
-                            
-                            
-                            
-                            
-                            
-                        </div><div class="destaque" data-id="mu2y944xndg53" data-categoria="combos" data-tipo="combo" data-bebida="refri1l" data-index="4">
-                            <div class="img-placeholder skeleton"><img src="cachorro quente+suco ou refri" alt="Combo cachorro quente" loading="lazy"></div>
-                            <div class="info">
-                                <div class="nome">Combo cachorro quente <small>cachorro quente + suco ou refri lata</small></div>
-                            </div>
-                            <div class="preco">R$ 15,00 <span class="badge-gratis">+ENTREGA</span></div>
-                            
-                            
-                            
-                            
-                            
-                        </div><div class="destaque" data-id="mu2yeyu1z43qk" data-categoria="combos" data-tipo="combo" data-bebida="refri1l" data-index="5">
-                            <div class="img-placeholder skeleton"><img src="pizza+suco" alt="Combo Pizza + Suco" loading="lazy"></div>
-                            <div class="info">
-                                <div class="nome">Combo Pizza + Suco <small>Pizza G + 2 sucos da fruta</small></div>
-                            </div>
-                            <div class="preco">R$ 40,00 <span class="badge-gratis">+ENTREGA</span></div>
                             
                             
                             
@@ -787,20 +779,9 @@
                             
                             
                         </div><div class="produto" data-id="bebida2" data-categoria="bebidas" data-tipo="refrilata" data-index="1">
-                            <div class="img-placeholder"><img src="refri lata.png" alt="Refrigerante Lata" loading="lazy" class="carregada"></div>
+                            <div class="img-placeholder"><img src="refri e suco.jfif" alt="Refrigerante Lata e suco" loading="lazy" class="carregada"></div>
                             <div class="info">
-                                <div class="nome">Refrigerante Lata <small>Escolha o sabor</small></div>
-                            </div>
-                            <div class="preco">R$ 5,00 </div>
-                            
-                            
-                            
-                            
-                            
-                        </div><div class="produto" data-id="bebida3" data-categoria="bebidas" data-tipo="suco" data-index="2">
-                            <div class="img-placeholder"><img src="refri suco.png" alt="Suco Natural" loading="lazy" class="carregada"></div>
-                            <div class="info">
-                                <div class="nome">Suco Natural <small>Escolha o sabor</small></div>
+                                <div class="nome">Refrigerante Lata e suco <small>Escolha o sabor</small></div>
                             </div>
                             <div class="preco">R$ 5,00 </div>
                             
@@ -943,16 +924,32 @@
     <div class="carrinho-fixo" id="carrinhoFixo">
         <div class="resumo" id="resumoCarrinho">
             <div class="info-carrinho">
-                <span id="contadorItens">0</span> itens • <span class="total" id="totalCarrinho">R$ 0,00</span>
-                <span class="frete-info" id="freteInfo">Entrega: R$ 0,00</span>
+                <span id="contadorItens">1</span> itens • <span class="total" id="totalCarrinho">R$ 10,00</span>
+                <span class="frete-info" id="freteInfo">Entrega: R$ 5,00</span>
             </div>
             <div class="acoes">
                 <button class="toggle-carrinho" id="toggleCarrinho" aria-label="Expandir carrinho">▼</button>
                 <button class="btn-limpar" id="btnLimparCarrinho">🗑️</button>
-                <button class="btn-whatsapp" id="btnFinalizarPedido" disabled="">📲 Adicione itens</button>
+                <button class="btn-whatsapp" id="btnFinalizarPedido">📲 Finalizar Pedido - R$ 10,00</button>
             </div>
         </div>
-        <div class="carrinho-itens" id="carrinhoItensExpandido"><div style="color:var(--text-muted);padding:8px 0;">Carrinho vazio</div></div>
+        <div class="carrinho-itens" id="carrinhoItensExpandido">
+                            <div class="item-carrinho" data-id="mu329jj0m7353">
+                                <span class="item-nome" style="cursor:pointer;" title="Clique para editar">Refrigerante Lata - Guaraná lata</span>
+                                <div class="qtd-control">
+                                    <button class="qtd-menos" data-id="mu329jj0m7353">−</button>
+                                    <span>1</span>
+                                    <button class="qtd-mais" data-id="mu329jj0m7353">+</button>
+                                </div>
+                                <span class="item-preco">R$ 5,00</span>
+                                <button class="btn-remover-item" data-id="mu329jj0m7353" aria-label="Remover item">✕</button>
+                            </div>
+                        
+                        <div class="item-carrinho" style="border-top:1px solid var(--border-color);padding-top:8px;margin-top:4px;">
+                            <span class="item-nome" style="color:var(--text-muted);">🚚 Entrega (Jaçanã)</span>
+                            <span class="item-preco" style="color:var(--accent);">R$ 5,00</span>
+                        </div>
+                    </div>
     </div>
 
     <!-- ===== RODAPÉ ===== -->
@@ -1084,7 +1081,8 @@
                     "disponivel": true,
                     "img": "pizza+lata.png",
                     "tipo": "combo",
-                    "bebida": "refrilata"
+                    "bebida": "refrilata",
+                    "categoriaBase": "pizzas"
                 },
                 {
                     "id": "combo3",
@@ -1102,29 +1100,10 @@
                     "desc": "5 Coxinhas +refri lata",
                     "preco": 15,
                     "disponivel": true,
-                    "img": "coxinha +refri lata jpeg",
+                    "img": "combos salgados.jpeg",
                     "tipo": "combo",
-                    "bebida": "refri1l"
-                },
-                {
-                    "id": "mu2y944xndg53",
-                    "nome": "Combo cachorro quente",
-                    "desc": "cachorro quente + suco ou refri lata",
-                    "preco": 15,
-                    "disponivel": true,
-                    "img": "cachorro quente+suco ou refri",
-                    "tipo": "combo",
-                    "bebida": "refri1l"
-                },
-                {
-                    "id": "mu2yeyu1z43qk",
-                    "nome": "Combo Pizza + Suco",
-                    "desc": "Pizza G + 2 sucos da fruta",
-                    "preco": 40,
-                    "disponivel": true,
-                    "img": "pizza+suco",
-                    "tipo": "combo",
-                    "bebida": "refri1l"
+                    "bebida": "refrilata",
+                    "categoriaBase": "salgados"
                 }
             ]
         },
@@ -1142,11 +1121,11 @@
                 },
                 {
                     "id": "bebida2",
-                    "nome": "Refrigerante Lata",
+                    "nome": "Refrigerante Lata e suco",
                     "desc": "Escolha o sabor",
                     "preco": 5,
                     "disponivel": true,
-                    "img": "refri lata.png",
+                    "img": "refri e suco.jfif",
                     "tipo": "refrilata"
                 },
                 {
@@ -1154,7 +1133,7 @@
                     "nome": "Suco Natural",
                     "desc": "Escolha o sabor",
                     "preco": 5,
-                    "disponivel": true,
+                    "disponivel": false,
                     "img": "refri suco.png",
                     "tipo": "suco"
                 }
@@ -1260,6 +1239,10 @@
                     "tipo": ""
                 }
             ]
+        },
+        "combossalgados": {
+            "nome": "Combos Salgados",
+            "produtos": []
         }
     },
     "bebidas": {
@@ -1268,9 +1251,10 @@
             "Guaraná"
         ],
         "refrilata": [
-            "Guaraná",
-            "Fanta Uva",
-            "Pepsi"
+            "Guaraná lata",
+            "Pepsi lata",
+            "suco Goiaba",
+            "suco Maracujá"
         ],
         "suco": [
             "Goiaba",
@@ -1365,6 +1349,21 @@
                 toastEl._timer = setTimeout(() => toastEl.classList.remove('mostrar'), duracao);
             }
             function gerarId() { return Date.now().toString(36) + Math.random().toString(36).substr(2,5); }
+            // Modal genérico de confirmação (usado para remover produtos, etc.)
+            function pedirConfirmacao(mensagem, textoBotao, callback) {
+                if (!confirmAcaoOverlay) { if (typeof callback === 'function') callback(); return; }
+                if (confirmAcaoMensagem) confirmAcaoMensagem.textContent = mensagem;
+                if (confirmAcaoOk) confirmAcaoOk.textContent = textoBotao || '🗑️ Remover';
+                confirmAcaoOverlay.classList.add('aberto');
+                function fechar() { confirmAcaoOverlay.classList.remove('aberto'); }
+                if (confirmAcaoOk) {
+                    confirmAcaoOk.onclick = function() { fechar(); if (typeof callback === 'function') callback(); };
+                }
+                if (confirmAcaoCancelar) {
+                    confirmAcaoCancelar.onclick = function() { fechar(); };
+                }
+                confirmAcaoOverlay.onclick = function(e) { if (e.target === confirmAcaoOverlay) fechar(); };
+            }
             function getSabores(tipo) {
                 const lista = cardapioData.bebidas[tipo];
                 if (lista && Array.isArray(lista) && lista.length > 0) return lista;
@@ -1373,9 +1372,14 @@
                 if (tipo === 'suco') return ['Goiaba', 'Acerola', 'Maracujá'];
                 return ['Opção 1', 'Opção 2'];
             }
-            function getPizzasDisponiveis() {
-                const pizzasData = cardapioData.categorias.pizzas.produtos;
-                return pizzasData.filter(p => p.disponivel).map(p => ({ nome: p.nome, img: p.img }));
+            function getItensDisponiveis(categoriaKey) {
+                const cat = cardapioData.categorias[categoriaKey];
+                if (!cat) return [];
+                return cat.produtos.filter(p => p.disponivel).map(p => ({ nome: p.nome, img: p.img }));
+            }
+            function getPizzasDisponiveis() { return getItensDisponiveis('pizzas'); }
+            function getTipoBebidaLabel(tipo) {
+                return tipo === 'refri1l' ? 'Refrigerante 1L' : tipo === 'refrilata' ? 'Refrigerante Lata' : tipo === 'suco' ? 'Suco Natural' : 'Bebida';
             }
 
             // ============================================================
@@ -1544,14 +1548,16 @@
                             }
                             const tipo = produto.tipo;
                             if (tipo === 'combo') {
-                                const pizzas = getPizzasDisponiveis();
-                                if (pizzas.length === 0) { mostrarToast('⚠️ Nenhuma pizza disponível.'); return; }
+                                const categoriaBase = produto.categoriaBase || 'pizzas';
+                                const itens = getItensDisponiveis(categoriaBase);
+                                if (itens.length === 0) { mostrarToast('⚠️ Nenhum item disponível para este combo.'); return; }
                                 abrirModalCombo({
                                     titulo: `Escolha as opções para ${produto.nome}`,
+                                    categoriaBase,
                                     bebida: produto.bebida || 'refri1l',
                                     preco: produto.preco,
                                     editId: null,
-                                    pizzaAtual: pizzas[0]?.nome || 'Calabresa',
+                                    itemAtual: itens[0]?.nome || '',
                                     bebidaAtual: getSabores(produto.bebida || 'refri1l')[0] || 'Pepsi'
                                 });
                             } else if (tipo === 'refri1l' || tipo === 'refrilata' || tipo === 'suco') {
@@ -1828,6 +1834,9 @@
                 const img = isEdit ? produtoEditar.img : '';
                 const tipo = isEdit ? produtoEditar.tipo : '';
                 const disponivel = isEdit ? produtoEditar.disponivel : true;
+                const categoriasParaCombo = Object.keys(cardapioData.categorias).filter(k => k !== 'combos');
+                const categoriaBaseAtual = isEdit && produtoEditar.categoriaBase ? produtoEditar.categoriaBase : (categoriasParaCombo.includes('salgados') ? 'salgados' : (categoriasParaCombo.includes('pizzas') ? 'pizzas' : (categoriasParaCombo[0] || '')));
+                const bebidaComboAtual = isEdit && produtoEditar.bebida ? produtoEditar.bebida : 'refri1l';
 
                 modalBody.innerHTML = `
                     <div class="campo" style="margin-bottom:12px;">
@@ -1858,6 +1867,20 @@
                             <option value="salgados" ${tipo==='salgados'?'selected':''}>Salgados</option>
                         </select>
                     </div>
+                    <div class="campo" style="margin-bottom:12px;${tipo==='combo'?'':'display:none;'}" id="grupoComboCategoria">
+                        <label>Item principal do combo (categoria):</label>
+                        <select id="inputCategoriaComboProduto" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                            ${categoriasParaCombo.map(k => `<option value="${k}" ${k===categoriaBaseAtual?'selected':''}>${cardapioData.categorias[k].nome}</option>`).join('')}
+                        </select>
+                    </div>
+                    <div class="campo" style="margin-bottom:12px;${tipo==='combo'?'':'display:none;'}" id="grupoComboBebida">
+                        <label>Bebida do combo:</label>
+                        <select id="inputBebidaComboProduto" style="width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-primary);font-size:15px;outline:none;">
+                            <option value="refri1l" ${bebidaComboAtual==='refri1l'?'selected':''}>Refrigerante 1L</option>
+                            <option value="refrilata" ${bebidaComboAtual==='refrilata'?'selected':''}>Refrigerante Lata</option>
+                            <option value="suco" ${bebidaComboAtual==='suco'?'selected':''}>Suco Natural</option>
+                        </select>
+                    </div>
                     <div class="campo" style="margin-bottom:12px;">
                         <label><input type="checkbox" id="inputDisponivel" ${disponivel?'checked':''} /> Disponível</label>
                     </div>
@@ -1867,6 +1890,16 @@
                 `;
                 modalAdicionar.textContent = isEdit ? '💾 Salvar' : 'Adicionar';
                 abrirModalComHistorico(modalOverlay);
+
+                const selectTipoProduto = document.getElementById('inputTipoProduto');
+                const grupoComboCategoria = document.getElementById('grupoComboCategoria');
+                const grupoComboBebida = document.getElementById('grupoComboBebida');
+                function atualizarVisibilidadeCombo() {
+                    const mostrar = selectTipoProduto.value === 'combo';
+                    if (grupoComboCategoria) grupoComboCategoria.style.display = mostrar ? 'block' : 'none';
+                    if (grupoComboBebida) grupoComboBebida.style.display = mostrar ? 'block' : 'none';
+                }
+                if (selectTipoProduto) selectTipoProduto.addEventListener('change', atualizarVisibilidadeCombo);
 
                 if (isEdit) {
                     const btnRemover = document.getElementById('btnRemoverProdutoModal');
@@ -1888,18 +1921,26 @@
                     if (isNaN(preco) || preco < 0) { document.getElementById('modalAviso').textContent = '⚠️ Preço inválido'; return; }
                     const produtos = cardapioData.categorias[categoriaKey]?.produtos;
                     if (!produtos) { document.getElementById('modalAviso').textContent = '⚠️ Categoria não encontrada'; return; }
+                    const categoriaBaseCombo = document.getElementById('inputCategoriaComboProduto')?.value || 'pizzas';
+                    const bebidaCombo = document.getElementById('inputBebidaComboProduto')?.value || 'refri1l';
 
                     if (isEdit) {
                         const idx = produtos.findIndex(p => p.id === produtoEditar.id);
                         if (idx !== -1) {
                             produtos[idx] = { ...produtos[idx], nome, desc: desc||'Descrição', preco, disponivel, img: img||'', tipo: tipo||'' };
-                            if (tipo === 'combo' && !produtos[idx].bebida) produtos[idx].bebida = 'refri1l';
+                            if (tipo === 'combo') {
+                                produtos[idx].bebida = bebidaCombo;
+                                produtos[idx].categoriaBase = categoriaBaseCombo;
+                            } else {
+                                delete produtos[idx].bebida;
+                                delete produtos[idx].categoriaBase;
+                            }
                             salvarCardapio(); renderizarCardapio(); fecharModalComHistorico(modalOverlay);
                             mostrarToast(`✅ Produto "${nome}" atualizado!`);
                         } else { document.getElementById('modalAviso').textContent = '⚠️ Produto não encontrado'; }
                     } else {
                         const novoProduto = { id: gerarId(), nome, desc: desc||'Descrição', preco, disponivel, img: img||'', tipo: tipo||'' };
-                        if (tipo === 'combo') novoProduto.bebida = 'refri1l';
+                        if (tipo === 'combo') { novoProduto.bebida = bebidaCombo; novoProduto.categoriaBase = categoriaBaseCombo; }
                         produtos.push(novoProduto);
                         salvarCardapio(); renderizarCardapio();
                         mostrarToast(`✅ ${nome} adicionado!`);
@@ -2093,14 +2134,17 @@
 
                 if (tipo === 'combo') {
                     const partes = nomeBase.replace('Combo ', '').split(' + ');
-                    const pizzaAtual = partes[0] || 'Calabresa';
-                    const bebidaAtual = partes[1] || (getSabores('refri1l')[0] || 'Pepsi');
+                    const categoriaBase = item.detalhes?.categoriaBase || 'pizzas';
+                    const tipoBebida = item.detalhes?.tipoBebida || 'refri1l';
+                    const itemAtual = item.detalhes?.item || partes[0] || '';
+                    const bebidaAtual = item.detalhes?.bebida || partes[1] || (getSabores(tipoBebida)[0] || 'Pepsi');
                     abrirModalCombo({
                         titulo: 'Editar Combo',
-                        bebida: 'refri1l',
+                        categoriaBase: categoriaBase,
+                        bebida: tipoBebida,
                         preco: preco,
                         editId: id,
-                        pizzaAtual: pizzaAtual,
+                        itemAtual: itemAtual,
                         bebidaAtual: bebidaAtual
                     });
                 } else if (tipo === 'refri1l' || tipo === 'refrilata' || tipo === 'suco') {
@@ -2198,17 +2242,19 @@
             }
 
             function abrirModalCombo(opcoes) {
-                const pizzas = getPizzasDisponiveis();
-                if (pizzas.length === 0) { mostrarToast('⚠️ Nenhuma pizza disponível para combo.'); return; }
+                const categoriaBase = opcoes.categoriaBase || 'pizzas';
+                const itens = getItensDisponiveis(categoriaBase);
+                if (itens.length === 0) { mostrarToast('⚠️ Nenhum item disponível para este combo.'); return; }
+                const catNome = cardapioData.categorias[categoriaBase]?.nome || 'Item';
                 const saboresBebida = getSabores(opcoes.bebida || 'refri1l');
-                let html = `<div class="opcao-grupo"><label>Escolha a pizza:</label><div class="opcoes">`;
-                pizzas.forEach(p => {
-                    const selected = (p.nome === (opcoes.pizzaAtual || pizzas[0]?.nome)) ? 'selecionado' : '';
-                    const imgTag = p.img ? `<img src="${p.img}" alt="${p.nome}" loading="lazy" />` : '🍕';
-                    html += `<label class="${selected}">${imgTag}${p.nome}<input type="radio" name="pizza_combo" value="${p.nome}" ${selected?'checked':''} /></label>`;
+                let html = `<div class="opcao-grupo"><label>Escolha o item (${catNome}):</label><div class="opcoes">`;
+                itens.forEach(p => {
+                    const selected = (p.nome === (opcoes.itemAtual || itens[0]?.nome)) ? 'selecionado' : '';
+                    const imgTag = p.img ? `<img src="${p.img}" alt="${p.nome}" loading="lazy" />` : '🍽️';
+                    html += `<label class="${selected}">${imgTag}${p.nome}<input type="radio" name="item_combo" value="${p.nome}" ${selected?'checked':''} /></label>`;
                 });
                 html += `</div></div>`;
-                html += `<div class="opcao-grupo"><label>Escolha o sabor da bebida:</label><div class="opcoes">`;
+                html += `<div class="opcao-grupo"><label>Escolha o sabor da bebida (${getTipoBebidaLabel(opcoes.bebida || 'refri1l')}):</label><div class="opcoes">`;
                 saboresBebida.forEach(s => {
                     const selected = (s === (opcoes.bebidaAtual || saboresBebida[0])) ? 'selecionado' : '';
                     html += `<label class="${selected}">${s}<input type="radio" name="bebida_combo" value="${s}" ${selected?'checked':''} /></label>`;
@@ -2226,20 +2272,21 @@
                 });
                 abrirModalComHistorico(modalOverlay);
                 modalAdicionar.onclick = function() {
-                    const pizzaSel = document.querySelector('input[name="pizza_combo"]:checked');
+                    const itemSel = document.querySelector('input[name="item_combo"]:checked');
                     const bebidaSel = document.querySelector('input[name="bebida_combo"]:checked');
-                    if (!pizzaSel || !bebidaSel) { document.getElementById('modalAviso').textContent = '⚠️ Selecione pizza e bebida'; return; }
-                    const nomeFinal = `Combo ${pizzaSel.value} + ${bebidaSel.value}`;
+                    if (!itemSel || !bebidaSel) { document.getElementById('modalAviso').textContent = '⚠️ Selecione as duas opções'; return; }
+                    const nomeFinal = `Combo ${itemSel.value} + ${bebidaSel.value}`;
+                    const detalhes = { item: itemSel.value, bebida: bebidaSel.value, categoriaBase, tipoBebida: opcoes.bebida || 'refri1l' };
                     const editId = opcoes.editId;
                     const idx = editId ? carrinho.findIndex(item => item.id === editId) : -1;
                     if (idx !== -1) {
                         carrinho[idx].nome = nomeFinal;
                         carrinho[idx].preco = opcoes.preco;
-                        carrinho[idx].detalhes = { pizza: pizzaSel.value, bebida: bebidaSel.value };
+                        carrinho[idx].detalhes = detalhes;
                         salvarCarrinho(); atualizarInterface();
                         mostrarToast(`✏️ Combo atualizado: ${nomeFinal}`);
                     } else {
-                        adicionarProduto(nomeFinal, opcoes.preco, 'combo', { pizza: pizzaSel.value, bebida: bebidaSel.value });
+                        adicionarProduto(nomeFinal, opcoes.preco, 'combo', detalhes);
                     }
                     fecharModalComHistorico(modalOverlay);
                 };
@@ -2751,6 +2798,10 @@
                 }
                 if (modalAdmin && modalAdmin.classList.contains('aberto')) {
                     modalAdmin.classList.remove('aberto');
+                    event.preventDefault(); return;
+                }
+                if (confirmAcaoOverlay && confirmAcaoOverlay.classList.contains('aberto')) {
+                    confirmAcaoOverlay.classList.remove('aberto');
                     event.preventDefault(); return;
                 }
             });
